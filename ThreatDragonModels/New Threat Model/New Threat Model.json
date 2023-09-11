@@ -51,15 +51,41 @@
               "threats": [
                 {
                   "id": "8c0cb38c-6d4d-4f46-97b3-824dba89068f",
-                  "title": "New STRIDE threat",
+                  "title": "Spoofing",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Spoofing",
-                  "description": "Provide a description for this threat",
+                  "description": "Aanvaller kan zich voordoen als gebruiker en dus acties uitvoeren op de applicatie",
                   "mitigation": "Provide remediation for this threat or a reason if status is N/A",
                   "modelType": "STRIDE",
-                  "new": true,
-                  "number": 0,
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                },
+                {
+                  "id": "07af6e52-9846-4695-a7f0-dae598df6034",
+                  "title": "Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Aanvaller kan proberen de gegevens te bewerken die niet kloppen",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                },
+                {
+                  "id": "37bc5ea0-c63c-4384-aaa2-532660ec1d03",
+                  "title": "Information disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Gegevens van andere gebruikers kunnen worden blootgesteld als ze binnen de applicatie komen",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 30,
                   "score": ""
                 }
               ]
@@ -253,11 +279,13 @@
                 "text": "Database"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -275,8 +303,22 @@
               "storesCredentials": false,
               "isEncrypted": false,
               "isSigned": false,
-              "hasOpenThreats": false,
-              "threats": []
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "57827cd4-a4b2-452f-8fe4-ee7d6a0dfc8c",
+                  "title": "information disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Aanvaller kan database lekken en gegevens blootstellen aan anderen",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -333,11 +375,13 @@
                 "text": "Inloggegevens"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -355,8 +399,22 @@
               "storesCredentials": false,
               "isEncrypted": false,
               "isSigned": false,
-              "hasOpenThreats": false,
-              "threats": []
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "47fea014-7e4b-4711-9970-18f2ac4af822",
+                  "title": "Spoofing",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Als aanvaller kan ik voor doen als een gebruiker of redacteurs als ik hun gegevens weet",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -772,8 +830,8 @@
                 "text": "Webbrowser"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -788,8 +846,22 @@
               "outOfScope": false,
               "reasonOutOfScope": "",
               "privilegeLevel": "",
-              "hasOpenThreats": false,
-              "threats": []
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "274e0ded-e764-4dc3-81c5-44ad1f4c9e7f",
+                  "title": "Denial of service ",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Aanvaller kan de communicatie tussen de Flask-applicatie en webbrowser overbelasten",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -893,6 +965,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Vries, D. de (Diederik)",
-    "threatTop": 23
+    "threatTop": 30
   }
 }
