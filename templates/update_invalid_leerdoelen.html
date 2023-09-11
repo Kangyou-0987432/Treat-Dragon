@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Database displayer</title>
+    <meta name="description" content="Simple database display"/>
+    <meta name="author" content="Rotterdam Academy"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/static/basic.css" type="text/css">
+
+</head>
+<body>
+{% include "Navbar.html" %}
+
+<main>
+
+    <p>
+        Update hier het leerdoel van vraagitem {{ id }}, voor de vraag:
+        <br/>
+        <br/>
+        <i>{{ vraag_id }}</i>.
+    </p>
+            <!-- Code inspired by https://www.youtube.com/watch?v=v3CSQkPJtAc&ab_channel=PythonSimplified -->
+            <div>
+                <div>
+                    <form action="/leerdoelen/edit/choose/<id>" method="post">
+                        <label for="leerdoelen"></label>
+                        <select name="update_leerdoel" id="leerdoelen">
+                            <option>
+                                - Kies leerdoel -
+                            </option>
+                            {% for l in dropdown_leerdoelen %}
+                                <option value="{{ l[0] }}">
+                                    {{  l[1] }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    <br/> <br/>
+                    <input type="hidden" name="selected_id" value="{{ id }}">
+                    <input type="submit" value="Opslaan">
+                    </form>
+                    <a href="/leerdoelen_invalid"><button>Annuleren</button></a>
+                </div>
+            </div>
+
+</main>

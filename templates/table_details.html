@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Database displayer</title>
+    <meta name="description" content="Simple database display"/>
+    <meta name="author" content="Rotterdam Academy"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/basic.css" type="text/css">
+
+
+</head>
+
+
+<body>
+
+<main>
+{% include "Navbar.html" %}
+
+<div>
+
+
+    <p>Alle rijen in de tabel <b>{{ table_name }}</b>:</p>
+    <div class="grid-container">
+
+        <div class="grid-item2">
+            <div class="select-filter">
+
+                <h2>Toon kolom</h2>
+
+                <form action="/table_details/{{ table_name }}/filtered" METHOD="POST">
+                    <div class="box">
+                    <label for="filter_select"></label>
+                        <select class="input_select" id="filter_select" name="Value_1">
+                            {% for column_name in columns %}
+                                <option id="column" name="Value_1">{{ column_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="fname">Van</label><br>
+                        <input class="input_select" type="number" id="fname" name="Value_2" placeholder="Waarde 1" value="" required><br>
+                        <label for="lname">Tot</label><br>
+                        <input class="input_select" type="number" id="lname" name="Value_3" placeholder="Waarde 2" value="" required><br><br>
+                        <input onclick="return confirm('Weet je het zeker ?') " type="submit" value="Filteren">
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="select-filter">
+
+                <h2>Voer aanpassing door</h2>
+                <form action="/table_details/{{ table_name }}/update" METHOD="POST" onsubmit="location.reload();">
+
+
+                        {% for row in rij %}
+                            {% for field in  row %}
+                                <input type="hidden" name=id value="{{ row[0] }}">
+                                <label for="select_input"></label>
+                                <textarea class="input_select" id="select_input" name="Update_values" required>{{ field }} </textarea><br>
+                            {% endfor %}
+                        {% endfor %}
+
+
+                        <br>
+                        <input onclick="return confirm('Weet je het zeker ?') " type="submit" value="Opslaan">
+
+                </form>
+            </div>
+        </div>
+
+
+        <div class="grid-item1">
+            <table>
+                <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column  }}</th>
+                    {% endfor %}
+                    <th>rij aanpassen</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in rows %}
+                    <tr class="active-row">
+                        {% for field in row %}
+                            <td>{{ field }}</td>
+                        {% endfor %}
+                        <td>
+                            <form action="/table_details/{{ table_name }}" METHOD="POST">
+                                <div>
+                                    <button class="input_select" type="submit" name="rowid" value="{{ row[0] }}"
+                                            onclick="return confirm('Rij aanpassen met ID {{ row[0] }}')">aanpassen
+                                    </button>
+                                </div>
+                            </form>
+
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+</main>
+
+</body>
+
+</html>

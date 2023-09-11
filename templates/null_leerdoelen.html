@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Database displayer</title>
+    <meta name="description" content="Simple database display"/>
+    <meta name="author" content="Rotterdam Academy"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/static/basic.css" type="text/css">
+</head>
+<body>
+{% include "Navbar.html" %}
+
+<main>
+    <p>Alle rijen in de tabel <b>vragen</b> met ontbrekende leerdoelen.
+    <br/>
+    <b>Klik op een leerdoel om het aan te passen.</b></p>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            {% for column in columns %}
+            <th>{{ column }}</th>
+            {% endfor %}
+            <th>info</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+        <tr class="active-row">
+            {% for field in row %}
+                {% if loop.index == 2 %}
+                    <td><a class="table_item" href="/leerdoelen_null/edit/{{ row[0] }}">{{ field }}</a></td>
+                {% else %}
+                    <td>{{ field }}</td>
+                {% endif %}
+            {% endfor %}
+        <td><a href="https://www.test-correct.nl/?vraag={{ row[0] }}" target="_blank"><button>Meer info</button></a>
+        </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+</main>
+</body>
+</html>

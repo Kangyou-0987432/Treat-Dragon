@@ -1,0 +1,33 @@
+<nav>
+    <ul>
+        <li id="nav_logo"><img src="/static/test-correct.png" alt="Test-Correct"></li>
+        <li><a href="/home">Home</a></li>
+        <li>
+            <a>Auteurs</a>
+            <ul class = "dropdown">
+                <li><a href="/table_details/{{ table_list[0] }}">Alle auteurs</a></li>
+                <li><a href="/auteur_text">Ongeldige medewerkers</a></li>
+                <li><a href="/auteurs_invalid">Ongeldige auteurs</a></li>
+                <li><a href="/auteurs_null">Ontbrekende auteurs</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>Leerdoelen</a>
+            <ul class = "dropdown">
+                <li><a href="/table_details/{{ table_list[1] }}">Alle leerdoelen</a></li>
+                <li><a href="/leerdoelen_invalid">Ongeldige leerdoelen</a></li>
+                <li><a href="/leerdoelen_null">Ontbrekende leerdoelen</a></li>
+
+            </ul>
+        </li>
+        <li>
+            <a>Vragen</a>
+            <ul class = "dropdown">
+                <li><a href="/table_details/{{ table_list[2] }}">Alle vragen</a></li>
+                <li><a href="/allHTML_error">HTML-fouten</a></li>
+            </ul>
+        </li>
+        <li><a href='/'>Logout</a></li>
+
+    </ul>
+</nav>

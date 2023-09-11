@@ -1,0 +1,193 @@
+/* Basic.css  - https://vladocar.github.io/Basic.css/ */
+/* Style inspired by https://www.test-correct.nl/ */
+
+
+
+* {box-sizing: border-box}
+
+:root{
+--sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif;
+--mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, 'Courier New', monospace;
+--font-nunito: url("../static/fonts/Nunito-Regular.ttf");
+--c1: #ffffff;
+--c2: #f0f2f5;
+--c3: #f0f2f5;
+--c4: #041f74;
+--c5:#000;
+--c6: #000000;
+--m1: 8px;
+--rc: 8px;
+}
+
+@font-face{
+    font-family: 'Nunito';
+    src: url("fonts/Nunito-Regular.ttf") format('truetype');
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+    --c1: #ffffff;
+    --c2: #f0f2f5;
+    --c3: #f0f2f5;
+    --c4: #041f74;
+	}
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+
+}
+
+/* General settings */
+
+body {
+    margin: 100px 0 0;
+    font-family: 'Nunito', serif;
+    font-weight: 400;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--c3);
+    color: var(--c4);
+}
+
+/* Navigation Menu */
+nav { margin:0 auto 500px; box-shadow: 0 3px 3px -3px rgba(0, 0, 0, .2); width:100%; height:auto; display:flex; flex-wrap:nowrap; background:var(--c1); position:fixed; top:0; }
+nav ul { margin:0;padding:0; list-style-type:none; display:flex; flex-wrap:nowrap; }
+nav ul li { position:relative; margin:0 20px 0 0; float:left; display:inline-block; }
+li > a:after { content: '»'; } /* Change this in order to change the Dropdown symbol */
+li > a:only-child:after { content: ''; }
+nav ul li a { padding:20px; display:inline-block; color: #041f74; text-decoration:none; font-weight:bold; font-size: 18px }
+nav ul li a:hover { opacity:0.5; color: #004df5; cursor: pointer }
+nav ul li ul { display:none; position:absolute; left:0; background:var(--c1); float:left; }
+nav ul li ul li { width:100%; border-bottom:1px solid rgba(255,255,255,.3); }
+nav ul li:hover ul { display:block; }
+
+/* Tabel Style*/
+
+table {border: 0 solid #27973D;background-color: #e3e3e3;width: 100% ;text-align: left;}
+table td, table.purpleHorizon th {border: 1px solid #27973d;padding: 2px 2px;}
+table tbody td {font-size: 16px;font-weight: bold;color: #041f74;}
+table tr:nth-child(even) {background: #ffffff;}
+table thead {background: #27973D;background: -moz-linear-gradient(top, #5db16d 0%, #3ca150 66%, #27973D 100%); background: -webkit-linear-gradient(top, #5db16d 0%, #3ca150 66%, #27973D 100%); background: linear-gradient(to bottom, #5db16d 0%, #3ca150 66%, #27973D 100%);border-bottom: 0 solid #270096;}
+table thead th {font-size: 16px;font-weight: bold;color: #FFFFFF;text-align: left;border-left: 0 solid #041f74;}
+table thead th:first-child {border-left: none;}
+
+
+
+.grid-item1 { grid-area: Tabel; }
+.grid-item2 { grid-area: SelectForm; width: 400px; height:400px ;margin-top: 16px; margin-left: 60px;  text-align: left;}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'Tabel Tabel Tabel Tabel SelectForm SelectForm'
+    'Tabel Tabel Tabel Tabel SelectForm SelectForm';
+}
+
+.select-filter{
+    width:100% ;
+    height:auto;
+    background-color: #838383;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+.input_select{
+    width: 99%;
+}
+
+img, iframe {border: none; max-width: 100%}
+
+pre {font: 1em/1.6 var(--mono); background: var(--c2); padding: 1em; overflow: auto}
+
+code {font: 1em/1.6 var(--mono);}
+
+blockquote {border-left: 5px solid var(--c2); padding: 1em 1.5em; margin: 0}
+
+hr {border:0; border-bottom: 1px solid var(--c4)}
+
+ /* Headlines */
+
+h1,h2,h3,h4,h5,h6 {margin: 0.6em 0; font-weight: normal}
+
+h1 {font-size: 2.625em;     text-align: center;   align-items: center; line-height: 1.2}
+
+h2 {font-size: 1.625em; line-height: 1.2}
+
+h3 {font-size: 1.3125em; line-height: 1.24}
+
+h4 {font-size: 1.1875em; line-height: 1.23}
+
+h5,h6 {font-size: 1em; font-weight:bold}
+
+/* Table */
+
+table { border-collapse: collapse; border-spacing: 0; margin:1em 0}
+
+th, td { text-align: left; vertical-align: top; border: 1px solid; padding: 0.4em}
+
+thead,tfoot {background: var(--c2)}
+
+/* Rounded Corners*/
+
+pre,code,input,select,textarea,button,img {border-radius: var(--rc)}
+
+
+/* Forms */
+
+input, select, textarea {font-size: 1em; color:var(--c4); background: var(--c2); border: 2px solid var(--c4); padding: 0.6em}
+
+
+
+section {display: flex; flex-flow: row wrap}
+
+[style*="--c:"], section>section, aside, article {flex:var(--c1); margin:var(--m1)}
+
+/* Cards */
+
+article {background: var(--c2); border-radius: var(--rc); padding: 1em; box-shadow: 0 1px 0 rgba(0,0,0,0.3)}
+
+[style*="--c:"]:first-child, section>section:first-child, article:first-child {margin-left:0}
+[style*="--c:"]:last-child, section>section:last-child, article:last-child {margin-right:0}
+
+/* Mark: Toegevoegd aan basic.css */
+main,footer {
+    margin: 0;
+    width: auto;
+    text-align: left;
+    align-items: left;
+    padding: 0 20px;
+}
+
+section>section {
+    color: #fff;
+    background-color: var(--c1);
+    padding: 15px;
+    margin: 10px 8px 10px 8px;
+    text-align: center;
+}
+
+@media (max-width: 481px) {
+    body {font-size: 18px}
+    main,footer {width: 98%}
+    section,article {flex:none; width:100%; margin-left: 0;}
+}
+
+#nav_logo {
+    max-width: 100%;
+    min-width: 230px;
+    border: 0;
+    margin: 0;
+    }
+
+a.table_item:link, a.table_item:visited {
+    color: var(--c4)
+}
+
+a.table_item:hover {
+    text-decoration: none;
+    color: rgba(4, 31, 116, 0.49);
+}

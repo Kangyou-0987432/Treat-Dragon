@@ -1,0 +1,33 @@
+#Find in 'vragen' table everything where the 'vraag' column is NULL or empty
+SELECT * FROM vragen WHERE vraag IS NULL OR vraag = ' ';
+
+
+#Disable NULL checks so you can insert rows with (intentionally) invalid columns
+PRAGMA ignore_check_constraints = 1;
+
+#Template to insert intentionally invalid rows into the "vragen" section
+INSERT INTO vragen (id, leerdoel, vraag, auteur)
+VALUES (7992, null, '', null);
+
+
+#even proberen Erik :)
+
+SELECT * from {Tabel} Where {columm_name} BETWEEN {value_1} AND {value_2}
+SELECT name from pragma_table_info({Tabel})
+
+SELECT * FROM auteurs WHERE "medewerker" != 0 AND "medewerker" != 1
+
+UPDATE {Tabel} SET {columm_name}='', {columm_name}='' WHERE id={ID};
+
+
+# Update queries test
+UPDATE vragen
+#Waar de vraag erin moet worden veranderd (hele text)
+SET vraag = 'Test edit'
+WHERE id = 7990
+#Een soort checksum om zeker te weten of de juiste entry wordt bijgewerkt
+  AND leerdoel IS NULL
+  AND vraag = ''
+  AND auteur IS NULL
+  AND rowid = 7990;
+

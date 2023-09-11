@@ -1,0 +1,2632 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\.";
+    mso-displayed-thousand-separator:"\,";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="44">
+            <img src="https://chinchillabeast.atlassian.net/images/icon-jira-software-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="44">
+            <a href="https://chinchillabeast.atlassian.net/issues/?jql=project%3Dchilla+and+type%3D%22User+story%22">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="44">
+            Displaying <strong>32</strong> issues at <strong>14/Jan/23 11:09 PM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                                                        Project
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                                                        Key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                                                        Summary
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                                                        Issue Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                                                        Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                                                        Priority
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                                                        Resolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                                                        Assignee
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                                                        Reporter
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                                                        Creator
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                                                        Created
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                                                        Last Viewed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                                                        Updated
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                                                        Resolved
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                                                        Affects versions
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                                                        Fix versions
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                                                        Components
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                                                        Due date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                                                        Votes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                                                        Watchers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                                                        Images
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                                                        Original estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                                                        Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                                                        Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                                                        Work Ratio
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                                                        Sub-tasks
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                                                        Linked Issues
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                                                        Environment
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                                                        Description
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                                                        Security Level
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                                                        Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                                                        Σ Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                                                        Σ Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                                                        Σ Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                                                        Σ Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                                                        Labels
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statuscategorychangedate" data-id="statuscategorychangedate">
+                                                        Status Category Changed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statusCategory" data-id="statusCategory">
+                                                        Status Category
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-parent" data-id="parent">
+                                                        Parent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10021" data-id="customfield_10021">
+                                                        Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10019" data-id="customfield_10019">
+                                                        Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10020" data-id="customfield_10020">
+                                                        Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10016" data-id="customfield_10016">
+                                                        Story point estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                                                        Development
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10062" rel="10062" data-issuekey="CHILLA-54" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-54" href="https://chinchillabeast.atlassian.net/browse/CHILLA-54">CHILLA-54</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik door middel van buttons verwezen worden naar andere schermen vanuit het menu
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 4:08 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 14/Jan/23 10:45 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Nu nog niet van toepassing
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Future updates
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000br:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10061" rel="10061" data-issuekey="CHILLA-53" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-53" href="https://chinchillabeast.atlassian.net/browse/CHILLA-53">CHILLA-53</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik een Homescherm zien
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Erik Aknaev
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 4:07 PM </td>
+                                            <td class="lastViewed"> 04/Jan/23 9:02 PM </td>
+                                            <td class="updated"> 07/Dec/22 2:17 PM </td>
+                                            <td class="resolutiondate"> 07/Dec/22 2:17 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Een werkende nav bar met de juiste lay-out.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 2:17 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:r
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    3
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10060" rel="10060" data-issuekey="CHILLA-52" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-52" href="https://chinchillabeast.atlassian.net/browse/CHILLA-52">CHILLA-52</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil een een Readme file met de instructies hoe ik gebruik kan maken van de webapplicatie in een VENV
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:57 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 14/Jan/23 10:45 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Repo
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000bj:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10059" rel="10059" data-issuekey="CHILLA-51" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-51" href="https://chinchillabeast.atlassian.net/browse/CHILLA-51">CHILLA-51</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik dat de huidige opzet rekening houdt met meer verbeteringen waar vergelijkbare schermen voor moeten worden opgezet
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:56 PM </td>
+                                            <td class="lastViewed"> 14/Jan/23 10:45 PM </td>
+                                            <td class="updated"> 24/Nov/22 2:30 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:56 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            Future updates
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000bb:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10058" rel="10058" data-issuekey="CHILLA-50" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-50" href="https://chinchillabeast.atlassian.net/browse/CHILLA-50">CHILLA-50</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik CRUD schermen hebben om mijn gebruiker en wachtwoord te kunnen instellen. Deze schermen zouden alleen beschikbaar moeten zijn voor gebruikers met “beheer” permissies.
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:53 PM </td>
+                                            <td class="lastViewed"> 14/Jan/23 10:45 PM </td>
+                                            <td class="updated"> 24/Nov/22 2:26 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:53 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000b3:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10057" rel="10057" data-issuekey="CHILLA-49" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-49" href="https://chinchillabeast.atlassian.net/browse/CHILLA-49">CHILLA-49</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik binnen de applicatie wachtwoorden kunnen wijzigen van anderen
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:48 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 07/Dec/22 2:36 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:48 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000av:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10056" rel="10056" data-issuekey="CHILLA-48" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-48" href="https://chinchillabeast.atlassian.net/browse/CHILLA-48">CHILLA-48</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik een interface hebben die qua uiterlijk aansluit bij de huisstijl van test-correct 
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Sharelle
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:43 PM </td>
+                                            <td class="lastViewed"> 22/Nov/22 2:13 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:45 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">2</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      [http://test-correct.nl/|http://test-correct.nl/|smart-link]
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000an:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10055" rel="10055" data-issuekey="CHILLA-47" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-47" href="https://chinchillabeast.atlassian.net/browse/CHILLA-47">CHILLA-47</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik op het menuscherm kunnen kiezen welke problemen ik wil zien
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:40 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 14/Jan/23 10:45 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      {{Kleuren, lettertype enschermopbouw}}😭 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i000af:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10054" rel="10054" data-issuekey="CHILLA-46" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-46" href="https://chinchillabeast.atlassian.net/browse/CHILLA-46">CHILLA-46</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik na het inloggen doorverwezen worden naar het menu scherm
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:39 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 07/Dec/22 2:10 PM </td>
+                                            <td class="resolutiondate"> 07/Dec/22 2:10 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Doormiddel van een Login knop, verwijzen worden naar het Homescherm. 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 2:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00025:b
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    2
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10053" rel="10053" data-issuekey="CHILLA-45" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-45" href="https://chinchillabeast.atlassian.net/browse/CHILLA-45">CHILLA-45</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik dat mijn login gegevens worden opgeslagen
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:37 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 07/Dec/22 2:33 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:37 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            Login
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i0009z:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10052" rel="10052" data-issuekey="CHILLA-44" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-44" href="https://chinchillabeast.atlassian.net/browse/CHILLA-44">CHILLA-44</a>
+</td>
+                                            <td class="summary"><p>
+                Als user moet ik kunnen inloggen door middel van een gebruikersnaam en een wachtwoord
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:35 PM </td>
+                                            <td class="lastViewed"> 17/Nov/22 3:36 PM </td>
+                                            <td class="updated"> 07/Dec/22 2:10 PM </td>
+                                            <td class="resolutiondate"> 07/Dec/22 2:10 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 2:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Login
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00025:c
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    5
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10050" rel="10050" data-issuekey="CHILLA-42" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-42" href="https://chinchillabeast.atlassian.net/browse/CHILLA-42">CHILLA-42</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik een login scherm kunnen zien
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:34 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 30/Nov/22 11:58 AM </td>
+                                            <td class="resolutiondate"> 30/Nov/22 11:58 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Een lay-out van een loginscherm hebben met twee forms voor gebruikers naam en wachtwoord.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 30/Nov/22 11:58 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Login
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00025:9
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    2
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10048" rel="10048" data-issuekey="CHILLA-40" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-40" href="https://chinchillabeast.atlassian.net/browse/CHILLA-40">CHILLA-40</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik kolommen uit de vraagtabel kunnen selecteren
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Testing&lt;/span&gt;">Testing</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Erik Aknaev
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:29 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 12:04 PM </td>
+                                            <td class="updated"> 16/Dec/22 11:59 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 16/Dec/22 11:59 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">In Progress</span>
+</td>
+                                            <td class="parent">            Probleem 5
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:lr
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10047" rel="10047" data-issuekey="CHILLA-39" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-39" href="https://chinchillabeast.atlassian.net/browse/CHILLA-39">CHILLA-39</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik kolommen uit alle tabellen kunnen selecteren
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Erik Aknaev
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:28 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 07/Dec/22 2:37 PM </td>
+                                            <td class="resolutiondate"> 07/Dec/22 2:37 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: De kolommen kiezen waarvan je de tussenwaarde wilt zien.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 2:37 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 5
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00026:
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    3
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10045" rel="10045" data-issuekey="CHILLA-37" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-37" href="https://chinchillabeast.atlassian.net/browse/CHILLA-37">CHILLA-37</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik alle rijen zien waarvan een kolom tussen bepaalde waardes valt
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Erik Aknaev
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:24 PM </td>
+                                            <td class="lastViewed"> 24/Nov/22 1:13 PM </td>
+                                            <td class="updated"> 07/Dec/22 2:26 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: De gebruik kan een tabel kiezen en die tussen bepaalden waardes zitten, die hij/zij zelf heeft aangegeven.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 9:43 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">In Progress</span>
+</td>
+                                            <td class="parent">            Probleem 5
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:i
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016">    5
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10044" rel="10044" data-issuekey="CHILLA-36" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-36" href="https://chinchillabeast.atlassian.net/browse/CHILLA-36">CHILLA-36</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik kolommen zien met onjuiste datatypes
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:21 PM </td>
+                                            <td class="lastViewed"> 17/Nov/22 3:30 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:45 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 4
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i0008f:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10043" rel="10043" data-issuekey="CHILLA-35" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-35" href="https://chinchillabeast.atlassian.net/browse/CHILLA-35">CHILLA-35</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik een CSV lijst kunnen downloaden van de data kwaliteit
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:19 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/Nov/22 2:35 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:19 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00087:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10042" rel="10042" data-issuekey="CHILLA-34" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-34" href="https://chinchillabeast.atlassian.net/browse/CHILLA-34">CHILLA-34</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik alle kolommen zien die een waarde hebben maar leeg zouden moeten zijn
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Dennis Hsu (1031879)
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:16 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:22 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:43 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Een optie op het startscherm of andere handige plek om alle kolommen zonder een waarde te zien terwijl het ingevuld moet zijn.<br/>
+<br/>
+Ik denk om een goede implementatie van deze user story te doen, is om bij elke rij waar op ‘Ignore’ wordt geklikt een soort tag moet geven. Alles met die tag wordt dan met een aparte query pages weergegeven, maar dit hele systeem is meer een &#39;could have&#39; dan een ‘must have’.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 3
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:7
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016">    4
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10041" rel="10041" data-issuekey="CHILLA-33" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-33" href="https://chinchillabeast.atlassian.net/browse/CHILLA-33">CHILLA-33</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik alle kolommen zien die leeg zouden moeten zijn maar wel een waarde hebben
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Dennis Hsu (1031879)
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:15 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 09/Jan/23 12:42 PM </td>
+                                            <td class="resolutiondate"> 09/Jan/23 12:42 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Een optie op het startscherm of andere handige plek om alle kolommen met een waarde te zien terwijl het niet moet.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/Jan/23 12:42 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 3
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:f
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016">    4
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10040" rel="10040" data-issuekey="CHILLA-32" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-32" href="https://chinchillabeast.atlassian.net/browse/CHILLA-32">CHILLA-32</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen een uitzondering kunnen geven
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Dennis Hsu (1031879)
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:10 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:22 PM </td>
+                                            <td class="updated"> 09/Dec/22 1:24 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Als er op een entry het uitzonderingsknop wordt geklikt moet het niet meer voorbijkomen in een overzicht.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i0007h:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10039" rel="10039" data-issuekey="CHILLA-31" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-31" href="https://chinchillabeast.atlassian.net/browse/CHILLA-31">CHILLA-31</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik de vraag direct kunnen verbeteren
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Sharelle
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:08 PM </td>
+                                            <td class="lastViewed"> 04/Jan/23 8:58 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:45 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:45 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00071:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10038" rel="10038" data-issuekey="CHILLA-30" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-30" href="https://chinchillabeast.atlassian.net/browse/CHILLA-30">CHILLA-30</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik dat het unieke item-ID getoond wordt met de vraag in het test-correct platform zelf
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:07 PM </td>
+                                            <td class="lastViewed"> 14/Jan/23 10:44 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:44 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:44 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Done
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:44 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i0006l:
+  </td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10037" rel="10037" data-issuekey="CHILLA-29" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-29" href="https://chinchillabeast.atlassian.net/browse/CHILLA-29">CHILLA-29</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil de gehele vraag kunnen zien bij probleem 1 &amp; 2
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:04 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 14/Jan/23 10:43 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            ChillPitaal
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:li
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10036" rel="10036" data-issuekey="CHILLA-28" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-28" href="https://chinchillabeast.atlassian.net/browse/CHILLA-28">CHILLA-28</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik een verbetervoorstel krijgen voor vragen met HTML of systeemcodes
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:01 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:20 PM </td>
+                                            <td class="updated"> 09/Dec/22 12:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Dod  <br/>
+<br/>
+een manier hebben gevonden op de &lt;br&gt; en &amp;nbsp of andere html codes weg te halen uit de vragen.<br/>
+<br/>
+
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 17/Nov/22 3:01 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent">            Probleem 2
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:hi
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10035" rel="10035" data-issuekey="CHILLA-27" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-27" href="https://chinchillabeast.atlassian.net/browse/CHILLA-27">CHILLA-27</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen met HTML of systeemcodes wijzigingen kunnen opslaan
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 3:00 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 14/Jan/23 10:44 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:44 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:44 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 2
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:lx
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10034" rel="10034" data-issuekey="CHILLA-26" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-26" href="https://chinchillabeast.atlassian.net/browse/CHILLA-26">CHILLA-26</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen met HTML of systeemcodes kunnen wijzigen
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:59 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 14/Jan/23 10:44 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:44 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:44 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 2
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:lv
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10028" rel="10028" data-issuekey="CHILLA-20" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-20" href="https://chinchillabeast.atlassian.net/browse/CHILLA-20">CHILLA-20</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik de gewijzigde leerdoelen kunnen opslaan
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Sharelle
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:52 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:30 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:43 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: Zodra de gebruiker het juiste leerdoel heeft gekozen, kan de wijziging worden opgeslagen door middel van klikken op de knop “Opslaan”.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 1
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:fi
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10027" rel="10027" data-issuekey="CHILLA-19" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-19" href="https://chinchillabeast.atlassian.net/browse/CHILLA-19">CHILLA-19</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen kunnen zien die andere HTML &quot;escape characters&quot; in hun vragen heeft staan
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:45 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:20 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:43 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Dod: naast &lt;br&gt; en &amp;nbsp wil ik ook andere vragen met html codes kunnen tonen op het menu scherm <br/>
+<br/>
+
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 2
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:3
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10026" rel="10026" data-issuekey="CHILLA-18" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-18" href="https://chinchillabeast.atlassian.net/browse/CHILLA-18">CHILLA-18</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen kunnen zien die &lt;br&gt; en &amp;nbsp bevatten
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            kangyou-098432
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:43 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:19 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:43 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      dod:<br/>
+<br/>
+Ik wil alle vragen waar html  codes op staan op het scherm zien (&lt;br&gt; en &amp;nbsp)<br/>
+<br/>
+
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 2
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:g
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10025" rel="10025" data-issuekey="CHILLA-17" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-17" href="https://chinchillabeast.atlassian.net/browse/CHILLA-17">CHILLA-17</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik de leerdoelen kunnen aanpassen
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Sharelle
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:41 PM </td>
+                                            <td class="lastViewed"> 09/Dec/22 1:28 PM </td>
+                                            <td class="updated"> 14/Jan/23 10:43 PM </td>
+                                            <td class="resolutiondate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: De gebruiker is in staat om uit een dropdown menu het juiste leerdoel te kiezen en op te slaan. Het leerdoel wordt dan gewijzigd in de tabel. Het liefst wordt het vraagitem dan ook verwijderd uit de tabel, na aanpassing van het leerdoel.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 14/Jan/23 10:43 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 1
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:f9
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 3</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10024" rel="10024" data-issuekey="CHILLA-16" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-16" href="https://chinchillabeast.atlassian.net/browse/CHILLA-16">CHILLA-16</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen kunnen zien die een ongeldig leerdoel hebben
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Sharelle
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:41 PM </td>
+                                            <td class="lastViewed"> 25/Nov/22 1:45 PM </td>
+                                            <td class="updated"> 07/Dec/22 2:17 PM </td>
+                                            <td class="resolutiondate"> 07/Dec/22 2:17 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: De vraagitems met een leerdoel hoger dan de waarde &#39;7&#39; worden met behulp van een query getoond op het scherm.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 2:17 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 1
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00024:
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    3
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10023" rel="10023" data-issuekey="CHILLA-15" class="issuerow">
+                                            <td class="project">    ChillaBeasWP2
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="CHILLA-15" href="https://chinchillabeast.atlassian.net/browse/CHILLA-15">CHILLA-15</a>
+</td>
+                                            <td class="summary"><p>
+                Als user wil ik vragen kunnen zien die geen leerdoelen hebben
+    </p>
+</td>
+                                            <td class="issuetype">    User story
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Sharelle
+    </td>
+                                            <td class="reporter">            kangyou-098432
+    </td>
+                                            <td class="creator">            kangyou-098432
+    </td>
+                                            <td class="created"> 17/Nov/22 2:40 PM </td>
+                                            <td class="lastViewed"> 24/Nov/22 1:21 PM </td>
+                                            <td class="updated"> 07/Dec/22 2:17 PM </td>
+                                            <td class="resolutiondate"> 07/Dec/22 2:17 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      DoD: De vraagitems zonder leerdoel worden met behulp van een query getoond op het scherm.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 07/Dec/22 2:17 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Done</span>
+</td>
+                                            <td class="parent">            Probleem 1
+    </td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10019">      0|i00023:m
+  </td>
+                                            <td class="customfield_10020">CHILLA Sprint 2</td>
+                                            <td class="customfield_10016">    3
+</td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+        </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="44"><font size="1">
+        Generated at Sat Jan 14 23:09:16 UTC 2023 by Sharelle using Jira 1001.0.0-SNAPSHOT#100214-sha1:b03f6a48cd7a45642a8815e9119ac45354b81e38.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
